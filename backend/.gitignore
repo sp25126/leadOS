@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+env/
+*.egg-info/
+
+# Secrets
+.env
+*.key
+
+# Data outputs — NEVER commit real lead data
+data/leads_*.csv
+data/leads_*.json
+data/raw_*.csv
+logs/
+temp/
+
+# Test artifacts
+breaker_state*.json
+test_results*.json
+*.bak

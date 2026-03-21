@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "leados-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "leados-web"
+    }
+  ],
+  // Environment variables — Cloudflare will read these at runtime
+  "vars": {
+    "NEXT_PUBLIC_API_URL": "https://api.webrox.xyz",
+    "NEXTAUTH_URL":        "https://webrox.xyz"
+  }
+}

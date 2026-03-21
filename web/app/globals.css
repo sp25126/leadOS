@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { background: #000; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { overflow-x: hidden; }
+
+/* ─── Lenis smooth scroll ─── */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 2px; height: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(123,47,255,0.25); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(123,47,255,0.5); }
+
+/* ─── Selection ─── */
+::selection { background: rgba(123,47,255,0.3); color: #fff; }
+
+/* ─── Focus rings ─── */
+:focus-visible { outline: 2px solid rgba(123,47,255,0.6); outline-offset: 3px; border-radius: 6px; }
+
+/* ─── Range slider ─── */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  height: 3px; border-radius: 999px;
+  background: linear-gradient(to right, #7B2FFF var(--val, 0%), rgba(255,255,255,0.07) var(--val, 0%));
+  cursor: pointer; width: 100%;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px;
+  border-radius: 50%; background: #fff; cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(123,47,255,0.3), 0 0 14px rgba(123,47,255,0.5);
+  border: 2px solid rgba(123,47,255,0.8);
+  transition: box-shadow 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 4px rgba(123,47,255,0.4), 0 0 20px rgba(123,47,255,0.7);
+}
+
+/* ─── Select ─── */
+select { -webkit-appearance: none; appearance: none; }
+select option { background: #0a0a0a; color: #fff; padding: 8px; }
+
+/* ─── Gradient text utility ─── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--c-grad-0) 0%, var(--c-grad-1) 45%, var(--c-grad-2) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ─── Noise texture overlay ─── */
+.noise::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.025;
+}
+
+/* ─── Glass morphism base ─── */
+.glass {
+  background: rgba(255,255,255,0.025);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ─── Animated gradient border ─── */
+@keyframes rotate-gradient {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+@property --angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.border-animated {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    conic-gradient(from var(--angle), #7B2FFF, #00E5FF, #FF2D9B, #7B2FFF) border-box;
+  animation: rotate-gradient 4s linear infinite;
+}
+
+/* ─── Theme CSS variables — defaults (Cosmic) ─── */
+:root {
+  --c-bg:          #000000;
+  --c-surface:     #0a0a0a;
+  --c-surface-alt: #111111;
+  --c-border:      rgba(255,255,255,0.06);
+  --c-border-hover:rgba(255,255,255,0.12);
+  --c-accent:      #7B2FFF;
+  --c-accent-soft: rgba(123,47,255,0.15);
+  --c-accent-2:    #00E5FF;
+  --c-accent-3:    #FF2D9B;
+  --c-text-1:      #FFFFFF;
+  --c-text-2:      rgba(255,255,255,0.5);
+  --c-text-3:      rgba(255,255,255,0.25);
+  --c-text-ghost:  rgba(255,255,255,0.08);
+  --c-success:     #10b981;
+  --c-error:       #ef4444;
+  --c-warning:     #f59e0b;
+  --c-grad-0:      #7B2FFF;
+  --c-grad-1:      #00E5FF;
+  --c-grad-2:      #FF2D9B;
+
+  --r-card:  16px;
+  --r-input: 12px;
+  --r-btn:   9999px;
+  --r-nav:   9999px;
+  --r-badge: 9999px;
+
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --tracking-hero: -0.04em;
+  --tracking-body: -0.01em;
+
+  --ease-base:  cubic-bezier(0.16,1,0.3,1);
+  --dur-fast:   150ms;
+  --dur-base:   350ms;
+  --dur-slow:   700ms;
+
+  --card-shadow:  none;
+  --accent-glow:  0 0 40px rgba(123,47,255,0.15);
+  --btn-glow:     0 0 20px rgba(123,47,255,0.4);
+  --cursor-color: rgba(123,47,255,0.06);
+}
+
+/* ─── All interactive transitions respect theme speed ─── */
+*, *::before, *::after {
+  transition-timing-function: var(--ease-base);
+}
+
+/* ─── Nord Ice — specific overrides ─── */
+.theme-nord body,
+.theme-nord {
+  font-family: var(--font-body);
+}
+.theme-nord h1, .theme-nord h2, .theme-nord h3,
+.theme-nord [data-display] {
+  font-weight: 600;
+}
+
+/* ─── CyberTerminal — unique CSS effects ─── */
+.theme-cyber * {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.03em;
+}
+
+/* Scanlines overlay — only on cyber theme */
+.theme-cyber::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+}
+
+/* Terminal cursor blink on focused inputs — cyber only */
+.cyber-input-focused::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+  color: var(--c-accent);
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Glitch effect class — applied by JS on hover in cyber mode */
+@keyframes glitch-1 {
+  0%   { clip-path: inset(0 0 98% 0); transform: translate(-2px, 0); }
+  20%  { clip-path: inset(40% 0 50% 0); transform: translate(2px, 0); }
+  40%  { clip-path: inset(80% 0 0 0); transform: translate(-1px, 0); }
+  100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+}
+@keyframes glitch-2 {
+  0%   { clip-path: inset(0 0 70% 0); transform: translate(2px, 0); }
+  30%  { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(100% 0 0 0); transform: translate(0); }
+}
+.glitch { position: relative; }
+.hover\:glitch:hover.glitch::before, .hover\:glitch:hover.glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.hover\:glitch:hover.glitch::before {
+  color: var(--c-accent-2);
+  animation: glitch-1 0.3s steps(1) infinite;
+}
+.hover\:glitch:hover.glitch::after {
+  color: var(--c-error);
+  animation: glitch-2 0.3s steps(1) 0.1s infinite;
+}
+
+/* Nord Ice — dot grid background */
+.theme-nord .dot-grid {
+  opacity: 1;
+}
+.dot-grid {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+/* ─── Utility classes that use CSS vars ─── */
+.bg-theme     { background-color: var(--c-bg); }
+.bg-surface   { background-color: var(--c-surface); }
+.text-theme   { color: var(--c-text-1); }
+.text-muted   { color: var(--c-text-2); }
+.text-accent  { color: var(--c-accent); }
+.border-theme { border-color: var(--c-border); }
+.r-card       { border-radius: var(--r-card); }
+.r-btn        { border-radius: var(--r-btn); }
