@@ -103,7 +103,11 @@ web/.env.local
 web/.env.development.local
 web/.env.test.local
 web/.env.production.local
+web/.dev.vars              # Cloudflare secrets
+web/.open-next/            # OpenNext build outputs
+web/.wrangler/             # Wrangler cache
 web/next-env.d.ts
+web/tsconfig.tsbuildinfo   # TypeScript build cache
 
 # ── Misc Development ────────────────────────────────
 .DS_Store
@@ -138,3 +142,8 @@ htmlcov/
 *.tsbuildinfo
 web/.eslintcache
 archive/
+web/.env.local.bak
+web/.env.local.bak2
+backend/.env.bak
+web/.env.local.placeholder
+backend/.env.placeholder

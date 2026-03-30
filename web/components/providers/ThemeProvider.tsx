@@ -13,24 +13,18 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     applyThemeToCSSVars(theme);
   }, [theme]);
 
-  // Load fonts conditionally or globally
-  useEffect(() => {
-    // Fonts are now loaded at top-level
-  }, []);
-
-  // During SSR, render a clean structure.
-  // After hydration, render the theme-aware container.
+  // Wait for client-side hydration
   if (!mounted) {
-    return <div className="min-h-screen bg-black text-white">{children}</div>;
+    return <div className="min-h-screen bg-black text-white antialiased theme-cosmic">{children}</div>;
   }
 
   return (
     <div
       className={`min-h-screen antialiased overflow-x-hidden relative transition-colors duration-700 ${mounted ? `theme-${theme.id}` : ''}`}
       style={{
-        background: mounted ? "var(--c-bg)" : "#000000",
-        color: mounted ? "var(--c-text-1)" : "#ffffff",
-        fontFamily: mounted ? "var(--font-body)" : "inherit"
+        background: "var(--c-bg)",
+        color: "var(--c-text-1)",
+        fontFamily: "var(--font-body)"
       }}
       data-theme-mounted={mounted}
     >

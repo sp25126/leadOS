@@ -1,6 +1,6 @@
 "use client";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useThemeStore } from "@/lib/themes/theme-store";
 
@@ -41,6 +41,11 @@ export default function GlassCard({
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const themeId = useThemeStore(s => s.theme.id);
   const isNord = themeId === "nord";
@@ -81,7 +86,7 @@ export default function GlassCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-30px" }}
       transition={{ duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] }}
-      style={tilt
+      style={tilt && mounted
         ? { rotateX, rotateY, transformStyle: "preserve-3d", perspective: "1200px" }
         : undefined}
       onMouseMove={tilt || glow ? handleMove : undefined}

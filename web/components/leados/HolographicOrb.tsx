@@ -1,13 +1,16 @@
-import { useEffect, useRef } from "react";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useThemeStore } from "@/lib/themes/theme-store";
 
 export default function HolographicOrb() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const themeId = useThemeStore(s => s.theme.id);
-  const isNord = themeId === "nord";
+  const themeId   = useThemeStore(s => s.theme.id);
+  const isNord    = themeId === "nord";
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (!canvasRef.current) return;
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
@@ -67,17 +70,15 @@ export default function HolographicOrb() {
 
         const g1 = ctx.createLinearGradient(0, 0, W, 0);
         if (isNord) {
-          // White + Pink Ice Crystal look
           g1.addColorStop(0,   `rgba(255,255,255,0)`);
-          g1.addColorStop(0.2, `rgba(236,239,244,0.4)`); // Nord Snow 3
-          g1.addColorStop(0.5, `rgba(208,135,112,0.85)`); // Nord Aurora Pink-ish
-          g1.addColorStop(0.8, `rgba(255,164,164,0.4)`); // Soft pink
+          g1.addColorStop(0.2, `rgba(236,239,244,0.4)`); 
+          g1.addColorStop(0.5, `rgba(208,135,112,0.85)`); 
+          g1.addColorStop(0.8, `rgba(255,164,164,0.4)`); 
           g1.addColorStop(1,   `rgba(255,255,255,0)`);
           
           drawCurve(r.width, g1, 15, pts);
           drawCurve(r.width * 0.4, `rgba(255,255,255,0.6)`, 8, pts);
         } else {
-          // Default Comic colors
           g1.addColorStop(0,   `hsla(${hShift},100%,65%,0)`);
           g1.addColorStop(0.2, `hsla(${hShift},100%,65%,0.55)`);
           g1.addColorStop(0.5, `hsla(${(hShift+60)%360},100%,70%,0.85)`);
@@ -98,7 +99,9 @@ export default function HolographicOrb() {
         cancelAnimationFrame(animId); 
         window.removeEventListener("resize", resize); 
     };
-  }, []);
+  }, [isNord]);
+
+  if (!mounted) return null;
 
   return (
     <motion.div

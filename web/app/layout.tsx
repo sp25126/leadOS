@@ -15,8 +15,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.variable} font-sans bg-black text-white antialiased`}>
+    <html lang="en" className="dark scroll-smooth" style={{
+      "--c-bg": "#000000",
+      "--c-surface": "#0a0a0a",
+      "--c-surface-alt": "#111111",
+      "--c-border": "rgba(255,255,255,0.06)",
+      "--c-accent": "#7B2FFF",
+      "--c-text-1": "#ffffff",
+      "--font-display": "inherit",
+      "--font-body": "sans-serif",
+    } as any}>
+      <body className={`${inter.variable} font-sans bg-black text-white antialiased theme-cosmic`}>
         {children}
       </body>
     </html>
