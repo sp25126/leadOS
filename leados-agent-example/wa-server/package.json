@@ -1,0 +1,17 @@
+{
+  "name": "wa-server",
+  "version": "1.0.0",
+  "description": "WhatsApp Web JS server for Lead Hunter Pro",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "p-queue": "^6.6.2",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.26.0"
+  }
+}

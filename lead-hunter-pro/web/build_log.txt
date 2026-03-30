@@ -1,0 +1,131 @@
+
+> web@0.1.0 cf:build
+> opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
+
+
+┌─────────────────────────────┐
+│ OpenNext — Cloudflare build │
+└─────────────────────────────┘
+
+WARN OpenNext is not fully compatible with Windows.
+WARN For optimal performance, it is recommended to use Windows Subsystem for Linux (WSL).
+WARN While OpenNext may function on Windows, it could encounter unpredictable failures during runtime.
+App directory: C:\Users\saumy\OneDrive\Desktop\lead_hunter\lead-hunter-pro\web
+Next.js version : 14.2.0
+WARN Next.js version 14.2.0 is not supported by the Next.js team.
+Major versions are supported for 2 years from their release date.
+Unsupported releases may contain unpatched security vulnerabilities.
+See https://nextjs.org/support-policy for more information.
+Continuing build due to --dangerouslyUseUnsupportedNextVersion flag.
+@opennextjs/cloudflare version: 1.17.1
+@opennextjs/aws version: 3.9.16
+
+┌─────────────────────────────────┐
+│ OpenNext — Building Next.js app │
+└─────────────────────────────────┘
+
+
+> web@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./node_modules/jose/dist/webapi/lib/deflate.js
+A Node.js API is used (CompressionStream at line: 10) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/jose/dist/webapi/lib/deflate.js
+./node_modules/jose/dist/webapi/jwe/flattened/decrypt.js
+./node_modules/jose/dist/webapi/index.js
+./node_modules/@auth/core/jwt.js
+./node_modules/@auth/core/lib/init.js
+./node_modules/@auth/core/lib/index.js
+./node_modules/@auth/core/index.js
+./node_modules/next-auth/index.js
+./auth.ts
+
+./node_modules/jose/dist/webapi/lib/deflate.js
+A Node.js API is used (DecompressionStream at line: 26) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/jose/dist/webapi/lib/deflate.js
+./node_modules/jose/dist/webapi/jwe/flattened/decrypt.js
+./node_modules/jose/dist/webapi/index.js
+./node_modules/@auth/core/jwt.js
+./node_modules/@auth/core/lib/init.js
+./node_modules/@auth/core/lib/index.js
+./node_modules/@auth/core/index.js
+./node_modules/next-auth/index.js
+./auth.ts
+
+ ✓ Compiled successfully
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+⚠️ Supabase credentials are missing. Forms will fail to submit.
+⚠️ Supabase credentials are missing. Forms will fail to submit.
+   Generating static pages (0/24) ...
+   Generating static pages (6/24) 
+   Generating static pages (12/24) 
+   Generating static pages (18/24) 
+⚠️ Supabase credentials are missing. Forms will fail to submit.
+ ✓ Generating static pages (24/24)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    5.38 kB         140 kB
+├ ○ /_not-found                          875 B            88 kB
+├ ƒ /api/auth/[...nextauth]              0 B                0 B
+├ ƒ /api/automation/thank-you            0 B                0 B
+├ ƒ /api/hire                            0 B                0 B
+├ ƒ /api/waitlist                        0 B                0 B
+├ ○ /deep-research                       3.97 kB         148 kB
+├ ○ /forge                               3.83 kB         134 kB
+├ ○ /hire                                2.99 kB         143 kB
+├ ○ /hire-me                             4.02 kB         144 kB
+├ ○ /history                             2.67 kB         146 kB
+├ ○ /leados                              5.04 kB         144 kB
+├ ○ /leados/dashboard                    9.74 kB         247 kB
+├ ○ /leados/help                         3.45 kB         140 kB
+├ ○ /leados/history                      30.1 kB         238 kB
+├ ○ /leados/ingest                       6.03 kB         149 kB
+├ ○ /leados/outreach                     8.77 kB         145 kB
+├ ○ /leados/refer                        3.61 kB         140 kB
+├ ○ /leados/settings                     5.68 kB         145 kB
+├ ○ /leados/whatsapp                     4.55 kB         131 kB
+├ ○ /login                               2.3 kB          140 kB
+└ ○ /referral                            2.87 kB         137 kB
++ First Load JS shared by all            87.1 kB
+  ├ chunks/23-5d9a82dd22d7b1f1.js        31.5 kB
+  ├ chunks/fd9d1056-e6139c44a3376316.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+ƒ Middleware                             80.1 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+┌──────────────────────────────┐
+│ OpenNext — Generating bundle │
+└──────────────────────────────┘
+
+Bundling middleware function...
+Bundling static assets...
+Bundling cache assets...
+Building server function: default...
+Applying code patches: 2.954s
+# copyPackageTemplateFiles
+[35m⚙️ Bundling the OpenNext server...
+[0m
+[35mWorker saved in `.open-next\worker.js` 🚀
+[0m
+OpenNext build complete.

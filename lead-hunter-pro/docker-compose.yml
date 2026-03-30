@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/html:/usr/share/nginx/html
+    depends_on:
+      - web
+      - api
+    restart: unless-stopped
+    networks:
+      - leados-network
+
+  api:
+    build: ./server
+    env_file: .env
+    volumes:
+      - ./server/output:/app/output
+      - ./server/logs:/app/logs
+      - ./server/config:/app/config
+    restart: unless-stopped
+    networks:
+      - leados-network
+
+  web:
+    build: ./web
+    env_file: .env
+    restart: unless-stopped
+    networks:
+      - leados-network
+
+  wa-server:
+    build: ./wa-server
+    env_file: .env
+    volumes:
+      - ./wa-server/.wwebjs_auth:/app/.wwebjs_auth
+    shm_size: 256m
+    restart: unless-stopped
+    networks:
+      - leados-network
+
+networks:
+  leados-network:
+    driver: bridge

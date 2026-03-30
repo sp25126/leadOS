@@ -1,0 +1,47 @@
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies
+node_modules/
+venv/
+env/
+.venv/
+
+# Build & Output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Python Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.tox/
+
+# OS & Misc
+.DS_Store
+Thumbs.db
+*.log
+*.pem
+
+# LeadOS Specific
+logs/
+output/
+archives/
+server/data/*
+!server/data/.gitkeep
+quota_state*.json
+test_out.txt
+*.csv
+C:tmpaudit_test/
+wa-server/.wwebjs_auth/
+wa-server/.wwebjs_cache/

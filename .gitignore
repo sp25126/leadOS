@@ -1,149 +1,42 @@
-# ════════════════════════════════════════════════════
-# LeadOS — .gitignore
-# ════════════════════════════════════════════════════
-
-# ── Environment & Secrets ────────────────────────────
-.env
-.env.local
-.env.development
-.env.development.local
-.env.test
-.env.test.local
-.env.production
-.env.production.local
-.env.staging
-*.env
-**/.env
-**/.env.*
-!**/.env.example     # KEEP example files
-
-# ── API Keys & Credentials ──────────────────────────
-*.key
-*.pem
-*.p8
-*.p12
-*.pfx
-*.crt
-*.cer
-serviceAccountKey.json
-google-services.json
-GoogleService-Info.plist
-firebase-adminsdk*.json
-secrets/
-credentials/
-
-# ── Python ──────────────────────────────────────────
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.venv/
-backend/venv/
-backend/.venv/
-backend/env/
-
-# ── Python test & data artifacts ─────────────────────
-*.json.bak
-backend/data/leads_*.csv
-backend/data/leads_*.json
-backend/logs/
-backend/temp/
-backend/__pycache__/
-backend/**/__pycache__/
-breaker_state*.json
-test_results*.json
-
 # ── Node / Next.js ──────────────────────────────────
 node_modules/
-web/node_modules/
+**/node_modules/
 .next/
-web/.next/
+**/.next/
 out/
-web/out/
+**/out/
 build/
-web/build/
+**/build/
+dist/
+**/dist/
 .vercel/
-web/.vercel/
+**/.vercel/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# ── Next.js specific ────────────────────────────────
-web/.env.local
-web/.env.development.local
-web/.env.test.local
-web/.env.production.local
-web/.dev.vars              # Cloudflare secrets
-web/.open-next/            # OpenNext build outputs
-web/.wrangler/             # Wrangler cache
-web/next-env.d.ts
-web/tsconfig.tsbuildinfo   # TypeScript build cache
+# ── Secrets & Config (RECURSIVE) ────────────────────
+**/.env*
+**/.dev.vars
+**/.open-next/
+**/.wrangler/
+**/master.key
+archive/
+archive/secrets/
+archive/legacy/
+**/__pycache__/
 
-# ── Misc Development ────────────────────────────────
+# ── Next.js / TypeScript ────────────────────────────
+**/next-env.d.ts
+**/tsconfig.tsbuildinfo
+**/.eslintcache
+
+# ── OS / IDE ────────────────────────────────────────
 .DS_Store
 .DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+.idea/
+.vscode/
 *.swp
 *.swo
 *~
-.idea/
-.vscode/settings.json
-.vscode/launch.json
 *.log
-logs/
-
-# ── Testing artifacts ────────────────────────────────
-coverage/
-.nyc_output/
-*.lcov
-.pytest_cache/
-htmlcov/
-.tox/
-.hypothesis/
-
-# ── Generated / Cache ────────────────────────────────
-.cache/
-.parcel-cache/
-.turbo/
-*.tsbuildinfo
-web/.eslintcache
-archive/
-web/.env.local.bak
-web/.env.local.bak2
-backend/.env.bak
-web/.env.local.placeholder
-backend/.env.placeholder
